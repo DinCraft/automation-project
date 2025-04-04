@@ -30,6 +30,14 @@ java {
     }
 }
 
+jar {
+  manifest {
+    attributes(
+      'Main-Class': 'org.dincraft.App'
+    )
+  }
+}
+
 application {
     // Define the main class for the application.
     mainClass = 'org.dincraft.App'
