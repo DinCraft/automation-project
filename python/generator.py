@@ -56,8 +56,8 @@ def create_title():
     ws['L8'] = "(первичный - 0; корректирующий - 1, 2 и так далее)"
     ws['H4'] = "за период с 1"
     ws['M4'] = "по"
-    ws['N4'] = str(days_amount) + date[0]
-    print(str(days_amount) + " " + months[date[0]])
+    # ws['N4'] = str(days_amount) + date[0]
+    # print(str(days_amount) + " " + months[date[0]])
 
 
 ws.merge_cells('F10:AH10')
