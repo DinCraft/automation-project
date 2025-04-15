@@ -40,6 +40,7 @@ public class App {
 
   public static void main(String[] args) {
     System.out.println(System.getProperty("user.dir"));
+    System.out.println("Some changes");
     execCmd("");
     System.exit(0);
     JFrame frame = new JFrame();
