@@ -10,9 +10,22 @@ if len(sys.argv) != 2:
 
 bold_font = Font(name='Arimo', size=10, bold=True)
 regular_font = Font(name='Arimo', size=10)
+small_font = Font(name='Arimo', size=8)
 thins = Side(border_style="thin")
 
-months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
+months = {
+    "01" : "января",
+    "02" : "февраля",
+    "03" : "марта",
+    "04" : "апреля",
+    "05" : "мая",
+    "06" : "июня",
+    "07" : "июля",
+    "08" : "августа",
+    "09" : "сентября",
+    "10" : "октября",
+    "11" : "ноября",
+    "12" : "декабря"}
 
 wb = Workbook()
 ws = wb.active
@@ -20,7 +33,7 @@ date = sys.argv[1].split("/")
 days_amount = monthrange(int(date[1]), int(date[0]))[1]
 
 def basic_formating():
-    ws.row_dimensions[0].height = 70
+    ws.row_dimensions[1].height = 70
     ws.column_dimensions['B'].width = 16
     ws.column_dimensions['D'].width = 4
     ws.column_dimensions['E'].width = 18
@@ -45,24 +58,47 @@ def create_title():
             ws.cell(row=y, column=x).border = Border(bottom=thins)
     ws['G1'] = "Т а б е л ь  №  ______________"
     ws['G1'].font = bold_font
+
     ws['F2'] = "учета использования рабочего времени"
     ws['F2'].font = bold_font
+
     ws['B5'] = "Учреждение"
     ws['E5'] = "Ярославский государственный университет им. П.Г. Демидова"
     ws['B6'] = "Структурное подразделение"
     ws['E6'] = "Кафедра теоретической информатики"
     ws['B7'] = "Вид табеля"
     ws['E7'] = "первичный"
+
     ws['L8'] = "(первичный - 0; корректирующий - 1, 2 и так далее)"
     ws['H4'] = "за период с 1"
     ws['M4'] = "по"
-    # ws['N4'] = str(days_amount) + date[0]
-    # print(str(days_amount) + " " + months[date[0]])
+    ws['N4'] = str(days_amount) + " " + months[date[0]]
 
+    ws['C10'] = "учётный номер"
+    ws['C10'].font = small_font
+    ws['c10'].alignment = Alignment(vertical = "center")
+    ws.merge_cells('F10:AH10')
 
-ws.merge_cells('F10:AH10')
-ws['F10'] = "Числа месяца"
-ws['F10'].alignment = Alignment(horizontal = "center")
+    ws['F10'] = "Числа месяца"
+    ws['F10'].alignment = Alignment(horizontal = "center")
+
+    ws[get_column_letter(days_amount + 8) + "10"] = "Итого отработано за месяц"
+    ws[get_column_letter(days_amount + 8) + "10"].alignment = Alignment(horizontal = "center")
+    ws.merge_cells(get_column_letter(days_amount + 8) + "10" + ":" + get_column_letter(days_amount + 12) + "10")
+
+    ws[get_column_letter(days_amount + 13) + "10"] = "Количе-ство дней (часов) неявок"
+    ws[get_column_letter(days_amount + 13) + "10"].alignment = Alignment(horizontal = "center", vertical = "center", wrap_text = True)
+    ws.merge_cells(get_column_letter(days_amount + 13) + "10" + ":" + get_column_letter(days_amount + 13) + "16")
+
+    ws['B11'] = "Фамилия, имя"
+    ws['B12'] = "Отчество"
+    ws['U11'] = "Итого"
+
+    ws[get_column_letter(days_amount + 7) + "11"] = "Всего"
+    ws[get_column_letter(days_amount + 8) + "11"] = "часов"
+    ws[get_column_letter(days_amount + 8) + "11"].alignment = Alignment(horizontal = "center", vertical = "center")
+    ws.merge_cells(get_column_letter(days_amount + 8) + "11" + ":" + get_column_letter(days_amount + 12) + "12")
+
 
 basic_formating()
 create_title()
