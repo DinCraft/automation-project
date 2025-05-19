@@ -8,6 +8,7 @@ from openpyxl.styles import Alignment
 
 from dincraft.datetime.utils import Utils
 from dincraft.datetime.months import Months
+from dincraft.generator.cell import Cell
 
 if len(sys.argv) != 2:
     exit("One argument is required!\n<date> in this format: 01/2020")
@@ -18,11 +19,11 @@ small_font = Font(name='Arimo', size=8)
 thins = Side(border_style="thin")
 
 wb = Workbook()
+Cell().init(wb.active)
 ws = wb.active
 date = sys.argv[1].split("/")
 days_amount = monthrange(int(date[1]), int(date[0]))[1]
 today = datetime.date.today()
-
 
 def basic_formating():
     ws.row_dimensions[1].height = 70
@@ -82,17 +83,18 @@ def create_title():
     ws['F10'].alignment = Alignment(horizontal="center")
 
     ws[get_column_letter(days_amount + 8) + "10"] = "Итого отработано за месяц"
-    ws[get_column_letter(days_amount + 8) +
-       "10"].alignment = Alignment(horizontal="center")
+    ws[get_column_letter(days_amount + 8) + "10"].alignment = Alignment(
+        horizontal="center")
     ws.merge_cells(get_column_letter(days_amount + 8) + "10" +
                    ":" + get_column_letter(days_amount + 12) + "10")
 
-    ws[get_column_letter(days_amount + 13) +
-       "10"] = "Количе-ство дней (часов) неявок"
+    ws[get_column_letter(days_amount + 13) +"10"] = "Количе-ство дней (часов) неявок"
     ws[get_column_letter(days_amount + 13) + "10"].alignment = Alignment(
-        horizontal="center", vertical="center", wrap_text=True)
-    ws.merge_cells(get_column_letter(days_amount + 13) + "10" +
-                   ":" + get_column_letter(days_amount + 13) + "16")
+        horizontal="center",
+        vertical="center",
+        wrap_text=True)
+    ws.merge_cells(get_column_letter(days_amount + 13) + "10"
+        + ":" + get_column_letter(days_amount + 13) + "16")
 
     ws['E13'] = "Должность"
     ws['E13'].alignment = Alignment(horizontal="center")
@@ -137,20 +139,22 @@ def create_title():
        "16"].alignment = Alignment(horizontal="center")
 
     ws[get_column_letter(days_amount + 8) + "11"] = "часов"
-    ws[get_column_letter(
-        days_amount + 8) + "11"].alignment = Alignment(horizontal="center", vertical="center")
+    ws[get_column_letter(days_amount + 8) + "11"].alignment = Alignment(
+        horizontal="center", vertical="center")
     ws.merge_cells(get_column_letter(days_amount + 8) + "11" +
                    ":" + get_column_letter(days_amount + 12) + "12")
 
     ws[get_column_letter(days_amount + 8) + "13"] = "всего"
-    ws[get_column_letter(
-        days_amount + 8) + "13"].alignment = Alignment(horizontal="center", vertical="center")
+    ws[get_column_letter(days_amount + 8) + "13"].alignment = Alignment(
+        horizontal="center",
+        vertical="center")
     ws.merge_cells(get_column_letter(days_amount + 8) + "13" +
                    ":" + get_column_letter(days_amount + 8) + "16")
 
     ws[get_column_letter(days_amount + 9) + "13"] = "из них"
-    ws[get_column_letter(
-        days_amount + 9) + "13"].alignment = Alignment(horizontal="center", vertical="center")
+    ws[get_column_letter(days_amount + 9) + "13"].alignment = Alignment(
+        horizontal="center",
+        vertical="center")
     ws.merge_cells(get_column_letter(days_amount + 9) + "13" +
                    ":" + get_column_letter(days_amount + 12) + "13")
 
