@@ -9,6 +9,11 @@ from openpyxl.styles import Alignment
 from dincraft.datetime.utils import Utils
 from dincraft.datetime.months import Months
 from dincraft.generator.cell import Cell
+from dincraft.common.employer import Employer
+from dincraft.common.table import Table
+
+table = Table()
+exit(0)
 
 if len(sys.argv) != 2:
     exit("One argument is required!\n<date> in this format: 01/2020")
