@@ -1,4 +1,4 @@
-class Employer:
+class Employee:
     def __init__(self, id: int, name: str, job: str, workdays: int, rate: int):
         self._id = id
         self._name = name

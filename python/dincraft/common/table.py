@@ -1,15 +1,14 @@
-from dincraft.common.employer import Employer
+from dincraft.common.employee import Employee
 from dincraft.common.response import Response
-from dincraft.datetime.months import Months
+from dincraft.datetime.month import Month
 
 class Table:
     def __init__(self):
         self._employers = []
-        self._month = Months.months[0]
         
 
     def create(self, id, name, job, workdays, rate):
-        self._employers.append(Employer(id, name, job, workdays, rate))
+        self._employers.append(Employee(id, name, job, workdays, rate))
 
     def read(self, id: int):
         for e in self._employers:

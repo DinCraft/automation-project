@@ -1,4 +1,4 @@
-class Months:
+class Month:
     months = [
         ["01", "января"],
         ["02", "февраля"],
@@ -14,6 +14,11 @@ class Months:
         ["12", "декабря"]
     ]
 
-    @classmethod
-    def test(self):
-        print("Test")
+    def __init__(self, monthId):
+        self._monthId = monthId
+
+    def id(self):
+        return Month.months[self._monthId][0]
+    
+    def name(self):
+        return Month.months[self._monthId][1]
