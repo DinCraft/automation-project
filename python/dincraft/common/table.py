@@ -5,7 +5,17 @@ from dincraft.datetime.month import Month
 class Table:
     def __init__(self):
         self._employers = []
-        
+        self._month = Month(0)
+        self._year = 2000
+
+    def save_database(self):
+        pass
+
+    def read_database(self):
+        pass
+
+    def save_xlsx(self):
+        pass
 
     def create(self, id, name, job, workdays, rate):
         self._employers.append(Employee(id, name, job, workdays, rate))

@@ -2,7 +2,7 @@ import os
 import sqlite3
 
 from dincraft.common.table import Table
-from table_command import TableCommand
+from dincraft.table_command import TableCommand
 
 print("Table maker")
 
