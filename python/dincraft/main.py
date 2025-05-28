@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-from dincraft.common.table import Table
+from dincraft.domain.table import Table
 from dincraft.table_command import TableCommand
 
 print("Table maker")

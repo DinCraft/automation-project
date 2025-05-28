@@ -1,5 +1,5 @@
-from dincraft.common.employee import Employee
-from dincraft.common.response import Response
+from dincraft.domain.employee import Employee
+from dincraft.domain.response import Response
 from dincraft.datetime.month import Month
 
 class Table:
@@ -15,6 +15,9 @@ class Table:
         pass
 
     def save_xlsx(self):
+        pass
+
+    def notify(self):
         pass
 
     def create(self, id, name, job, workdays, rate):

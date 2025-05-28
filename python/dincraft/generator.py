@@ -9,8 +9,8 @@ from openpyxl.styles import Alignment
 from dincraft.datetime.utils import Utils
 from dincraft.datetime.month import Month
 from dincraft.generator.cell import Cell
-from dincraft.common.employee import Employee
-from dincraft.common.table import Table
+from dincraft.domain.employee import Employee
+from dincraft.domain.table import Table
 
 table = Table()
 month = Month(3)

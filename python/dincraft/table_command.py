@@ -1,4 +1,4 @@
-from dincraft.common.table import Table
+from dincraft.domain.table import Table
 from dincraft.datetime.month import Month
 from employee_command import EmployeeCommand
 
@@ -15,6 +15,7 @@ class TableCommand:
 
     def set_month(self, month: Month):
         self._table._month = month
+        self._table.notify()
 
     def set_year(self, year):
         self._table._year = year
