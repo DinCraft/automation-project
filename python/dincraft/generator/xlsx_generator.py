@@ -1,4 +1,4 @@
-from dincraft.domain.table_event import TableEvent
+from dincraft.domain.table_listener import TableEvent
 from dincraft.domain.table import Table
 
 class XlsxGenerator(TableEvent):

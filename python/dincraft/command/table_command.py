@@ -1,3 +1,4 @@
+import os
 from dincraft.domain.table import Table
 from dincraft.date_time.month import Month
 from dincraft.command.employee_command import EmployeeCommand
@@ -5,12 +6,12 @@ from dincraft.command.employee_command import EmployeeCommand
 class TableCommand:
     def __init__(self, pathToFile: str):
         self._pathToFile = pathToFile
-        self._name = self._pathToFile[self._pathToFile.rfind("/") + 1:len(self._pathToFile) - 3]
+        self._name = os.path.basename(pathToFile)
         self._table = Table()
 
     def run(self):
         while True:
-            command = input(self._name + "> ")
+            command = input("tm>" + self._name + "> ")
             if len(command) == 0:
                 continue
             args = command.split()
@@ -19,6 +20,12 @@ class TableCommand:
                     print("No arguments required: exit")
                     continue
                 break
+
+            if args[0] == "create":
+                if len(args) != 1:
+                    print("No arguments required: exit")
+                    continue
+                
 
 
     def set_month(self, month: Month):

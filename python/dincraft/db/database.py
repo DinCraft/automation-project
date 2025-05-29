@@ -1,5 +1,5 @@
 from dincraft.domain.table import Table
-from dincraft.domain.table_event import TableEvent
+from dincraft.domain.table_listener import TableEvent
 
 class Database(TableEvent):
     def __init__(self, parent: Table, pathToFile: str):

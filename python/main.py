@@ -6,10 +6,12 @@ from dincraft.command.table_command import TableCommand
 print("Table maker")
 
 while True:
-    command = input()
+    command = input("tm> ")
     if len(command) == 0:
         continue
     args = command.split()
+    if len(args) == 0:
+        continue
     if args[0] == "exit":
         if len(args) != 1:
             print("No arguments required: exit")
