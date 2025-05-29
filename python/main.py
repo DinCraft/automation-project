@@ -5,8 +5,6 @@ from dincraft.command.table_command import TableCommand
 
 print("Table maker")
 
-tableCommand = TableCommand()
-
 while True:
     command = input()
     if len(command) == 0:
@@ -35,6 +33,8 @@ while True:
         if os.path.exists(args[1]):
             print("Error! File already exists!")
             continue
-        connection = sqlite3.connect(args[1])
+        tableCommand = TableCommand(args[1])
+        tableCommand.run()
+        continue
 
     print("Command not found!")

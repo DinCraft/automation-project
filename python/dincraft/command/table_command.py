@@ -5,13 +5,21 @@ from dincraft.command.employee_command import EmployeeCommand
 class TableCommand:
     def __init__(self, pathToFile: str):
         self._pathToFile = pathToFile
-        self._file = self._pathToFile[self._pathToFile.rfind("/"):len(self._pathToFile)]
+        self._name = self._pathToFile[self._pathToFile.rfind("/") + 1:len(self._pathToFile) - 3]
         self._table = Table()
 
     def run(self):
         while True:
-            command = input(self._name)
+            command = input(self._name + "> ")
+            if len(command) == 0:
+                continue
             args = command.split()
+            if args[0] == "exit":
+                if len(args) != 1:
+                    print("No arguments required: exit")
+                    continue
+                break
+
 
     def set_month(self, month: Month):
         self._table._month = month
