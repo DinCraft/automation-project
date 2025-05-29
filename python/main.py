@@ -1,24 +1,34 @@
 import os
 import sqlite3
 
-from dincraft.domain.table import Table
-from dincraft.table_command import TableCommand
+from dincraft.command.table_command import TableCommand
 
 print("Table maker")
 
-table = Table()
+tableCommand = TableCommand()
 
 while True:
     command = input()
+    if len(command) == 0:
+        continue
     args = command.split()
+    if args[0] == "exit":
+        if len(args) != 1:
+            print("No arguments required: exit")
+            continue
+        break
+
     if args[0] == "open":
         if len(args) != 2:
             print("Error! One argument required: open <pathToFile.db>")
+            continue
         if not os.path.exists(args[1]):
             print("Error! File doesn't exist!")
             continue
         connection = sqlite3.connect(args[1])
-    elif args[0] == "create":
+        continue
+
+    if args[0] == "create":
         if len(args) != 2:
             print("Error! One argument required: create <pathToFile.db>")
             continue
@@ -26,5 +36,5 @@ while True:
             print("Error! File already exists!")
             continue
         connection = sqlite3.connect(args[1])
-    else:
-        print("Command not found!")
+
+    print("Command not found!")

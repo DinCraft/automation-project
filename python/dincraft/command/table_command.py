@@ -1,6 +1,6 @@
 from dincraft.domain.table import Table
-from dincraft.datetime.month import Month
-from employee_command import EmployeeCommand
+from dincraft.date_time.month import Month
+from dincraft.command.employee_command import EmployeeCommand
 
 class TableCommand:
     def __init__(self, pathToFile: str):

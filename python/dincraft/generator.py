@@ -6,9 +6,8 @@ from openpyxl.styles import Font, Side, Border
 from openpyxl.utils.cell import get_column_letter
 from openpyxl.styles import Alignment
 
-from dincraft.datetime.utils import Utils
-from dincraft.datetime.month import Month
-from dincraft.generator.cell import Cell
+from dincraft.date_time.utils import Utils
+from dincraft.date_time.month import Month
 from dincraft.domain.employee import Employee
 from dincraft.domain.table import Table
 
