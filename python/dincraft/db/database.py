@@ -1,9 +1,7 @@
-from dincraft.domain.table import Table
-from dincraft.domain.table_listener import TableEvent
+from dincraft.domain.table_listener import TableListener
 
-class Database(TableEvent):
-    def __init__(self, parent: Table, pathToFile: str):
-        self._parent = parent
+class Database(TableListener):
+    def __init__(self, pathToFile: str):
         self._pathToFile = pathToFile
 
     def update(self):

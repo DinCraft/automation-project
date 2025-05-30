@@ -1,9 +1,8 @@
-from dincraft.domain.table_listener import TableEvent
-from dincraft.domain.table import Table
+from dincraft.domain.table_listener import TableListener
 
-class XlsxGenerator(TableEvent):
-    def __init__(self, table: Table):
-        self._table = table
+class XlsxGenerator(TableListener):
+    def __init__(self):
+        pass
 
     def save(self):
         pass
